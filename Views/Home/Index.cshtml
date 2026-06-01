@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@* HOME PAGE *@
+<div class="text-center">
+    <hr />
+    <div class="d-flex flex-wrap flex-md-nowrap gap-3">
+        @* LAST POST w-50  *@
+        <article class="col p-2 bg-light">
+            <h2>@ViewBag.LastPost.Title</h2>
+            <img width="400" src="@ViewBag.LastPost.Image" />
+            <p class="m-2">@ViewBag.LastPost.Content</p>
+        </article>
+
+        @* LIST IMPORTANT POST *@
+        <div class="col">
+            <div class="text-start">
+                <h4 class="border-3 border-bottom">Destacados</h4>
+                <div class="d-flex flex-column">
+                    @foreach (var post in @ViewBag.FeaturedPost)
+                    {
+                        <article class="d-flex justify-content-center justify-content-lg-start flex-column flex-lg-row py-2 border-bottom">
+                            <img src="@post.Image" class="m-md-0 m-auto" style="object-fit:contain;min-width:300px" width="300" height="150">
+                            <div class="p-3">
+                                <h3 class="fs-5 fw-bold">
+                                    <a class="text-decoration-none d-inline-block" style="text-wrap: balance;"
+                                    asp-controller="Blog" asp-action="Details" asp-route-id="@post.Id">@post.Title</a>
+                                </h3>
+                                <div class="">
+                                    <p class="blog-post-card-author">Admin</p>
+                                    <time class="blog-post-card-date" datetime="@post.createdAt">
+                                        <span class="visually-hidden">Actualizado</span>
+                                        @post.createdAt.ToString("dd 'de' MMMM 'de' yyyy")
+                                    </time>
+                                </div>
+                            </div>
+                        </article>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @* SECTION *@
+    <section class="my-4">
+        @* TITLE *@
+        <div class="d-flex gap-2 align-items-baseline">
+            <h2 class="w-full fs-3">Últimos artículos</h2>
+            <div class="w-full border-3 border-bottom flex-grow-1"></div>
+        </div>
+        @* CONTENT *@
+        <div class="d-flex flex-column">
+            <div class="row">
+                @foreach (var post in ((System.Collections.Generic.List<Post>)@ViewBag.LatestPosts).Take(2))
+                 {
+                    <article class="d-flex gap-3 col mb-1 py-2 cardhover" style="cursor: pointer;" onclick="window.location.href='/Blog/Details/@post.Id'">
+                        <img src="@post.Image" height="120" class="img" style="max-width: 180px;height: 120px;object-fit:contain" />
+                        <div class="d-flex flex-column justify-content-around gap-2 w-75">
+                            <span>@post.Title</span>
+                            <div class="d-flex justify-content-between text-secondary fw-light border-bottom">
+                                <p>@post.User.UserName</p>
+                                <time datetime="@post.createdAt">
+                                    @post.createdAt.ToString("dd 'de' MMMM 'de' yyyy")
+                                </time>
+                            </div>
+                        </div>
+                    </article>
+                 }
+                
+            </div>
+
+            <div class="row">
+                @foreach (var post in ((System.Collections.Generic.List<Post>)@ViewBag.LatestPosts).Take(2))//Skip
+                {
+                    <article class="d-flex gap-3 col mt-1 py-2 cardhover" style="cursor: pointer;" onclick="window.location.href='/Blog/Details/@post.Id'">
+                        <img src="@post.Image" height="120" class="img" style="max-width: 180px;height: 120px;object-fit:contain" />
+                        <div class="d-flex flex-column justify-content-around gap-2 w-75">
+                            <span>@post.Title</span>
+                            <div class="d-flex justify-content-between text-secondary fw-light border-bottom">
+                                <p>@post.User.UserName</p>
+                                <time datetime="@post.createdAt">
+                                    @post.createdAt.ToString("dd 'de' MMMM 'de' yyyy")
+                                </time>
+                            </div>
+                        </div>
+                    </article>
+                }
+            </div>
+        </div>
+    </section>
+
+    @* SECTION - TAG *@
+    <section class="my-4">
+        @foreach (var category in @ViewBag.CategoryPosts)
+        {
+            @* TITLE *@
+            <div class="d-flex gap-2 align-items-baseline">
+                <h2 class="w-full fs-3">@category.Category.Name</h2>
+                <div class="w-full border-3 border-bottom flex-grow-1"></div>
+            </div>
+
+            @* CONTENT *@
+            <div class="row">
+                @foreach (var post in category.Posts)
+                {
+                    <article class="col d-flex flex-column gap-3 border p-3 m-2 cardhover" onclick="window.location.href='/Blog/Details/@post.Id'">
+                        <img src="@post.Image" class="m-auto" width="250" alt="Alternate Text" />
+                        <div class="d-flex flex-column justify-content-around gap-2">
+                            <span>@post.Title</span>
+                            <div class="d-flex justify-content-between text-secondary fw-light">
+                                <p>@post.User.UserName</p>
+                                <time datetime="@post.createdAt">
+                                    @post.createdAt.ToString("dd 'de' MMMM 'de' yyyy")
+                                </time>
+                            </div>
+                        </div>
+                    </article>
+                }
+            </div>
+        }
+    </section>
+</div>

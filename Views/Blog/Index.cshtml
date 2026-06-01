@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Post>
+<h1 class="border-3 border-bottom">BLOGS</h1>
+    
+<div class="row">
+    <aside class="col col-md-3">
+        <div class="d-flex gap-1 justify-content-center">
+            <input class="form-control w-75 py-1 px-3" type="text" name="name" value="" />
+            <button class="bg-dark text-light border-0 rounded px-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="d-flex flex-column">
+            <h2 class="m-2">Random</h2>
+            <article class="col d-flex flex-column gap-3 border p-3 m-2 cardhover">
+                <img src="https://www.hubspot.com/hs-fs/hubfs/how-to-start-coding-1.jpg" class="m-auto img-fluid" width="250" alt="Alternate Text" />
+                <div class="d-flex flex-column justify-content-around gap-2">
+                    <span>IA para programar: 6 herramientas y consejos</span>
+                </div>
+            </article>
+            <article class="col d-flex flex-column gap-3 border p-3 m-2 cardhover">
+                <img src="https://www.hubspot.com/hs-fs/hubfs/how-to-start-coding-1.jpg" class="m-auto img-fluid" width="250" alt="Alternate Text" />
+                <div class="d-flex flex-column justify-content-around gap-2">
+                    <span>IA para programar: 6 herramientas y consejos</span>
+                    <div class="d-flex justify-content-between text-secondary fw-light">
+                    </div>
+                </div>
+            </article>
+        </div>
+    </aside>
+    <div class="col d-flex flex-column gap-3">
+        @foreach (var post in Model)
+        {
+            <article class="d-flex flex-column justify-content-center align-items-center p-2 bg-light">
+                <h2>@post.Title</h2>
+                <img class="img" width="400" src="@post.Image" />
+                <p class="m-2">
+                    @post.Content
+                </p>
+            </article>
+        }
+    </div>
+</div>

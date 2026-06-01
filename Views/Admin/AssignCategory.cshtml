@@ -1,0 +1,39 @@
+﻿@model BLOG.Models.Post
+
+<h1 class="mt-5 mb-3 border-bottom">Assign Category</h1>
+<h3>LIST POSTS</h3>
+<div class="form-group">
+    <hr />
+    @foreach (var post in ViewBag.Posts)
+    {
+        <form class="" method="post" asp-controller="Category" asp-action="AssignCategory">
+            <input type="hidden" name="id" value="@post.Id" />
+            <div class="fst-italic fw-bold">@post.Title</div>
+            <div>
+                @if (post.Categories != null && post.Categories.Count > 0)
+                {
+                    @foreach (var categoria in post.Categories)
+                    {
+                        <span class="badge bg-secondary">@categoria.Name</span>
+                    }
+                }
+                else
+                {
+                    <p>Este post no tiene categorías asignadas.</p>
+                }
+              </div>
+
+            @foreach (var categoria in ViewBag.Categorias)
+            {
+                <div>
+                    <input type="checkbox" name="SelectedCategories" value="@categoria.Id"
+                    @(Model?.Categories?.Any(pc => pc.Id == categoria.Id) == true ? "checked" : "") />
+                    <label>@categoria.Name</label>
+                </div>  
+            }
+            <button class="btn btn-primary mt-3">Save</button>
+            <hr />
+        </form>
+    }
+
+</div>

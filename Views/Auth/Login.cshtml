@@ -1,0 +1,31 @@
+﻿@model BLOG.DTOs.LoginDTO
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container">
+    <div class="d-flex flex-column col-12 col-sm-6 col-md-5 col-xl-2 border p-3 position-absolute top-50 start-50 translate-middle">
+        <h1>Login</h1>
+
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <input type="submit" value="Log In" class="btn btn-primary w-100" />
+            </div>
+        </form>
+        <div>
+            <a asp-action="Register">Don't have an account?</a>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model List<IdentityUser>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    @* <a asp-controller="Admin" asp-action="Edit" asp-route-id="@user.Id" class="btn btn-warning">Editar</a> *@
+                    <a asp-controller="Admin" asp-action="Delete" asp-route-id="@user.Id" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
