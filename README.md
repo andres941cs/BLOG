@@ -4,20 +4,17 @@ Aplicación web de blog desarrollada con **ASP.NET Core MVC (.NET 9)**, que util
 
 ## ✨ Características
 
-<!-- TODO: ajusta esta lista a las funcionalidades reales -->
-- Registro e inicio de sesión de usuarios (ASP.NET Core Identity)
-- Creación, edición y eliminación de publicaciones
-- Persistencia de datos con Entity Framework Core y migraciones
-- Uso de DTOs para separar la capa de presentación del modelo de datos
-- Arquitectura MVC (Modelos, Vistas, Controladores)
+### 🎨 Frontend
+- Vistas Razor (`.cshtml`) con layout compartido
+- Diseño responsive con Bootstrap
+- Formularios de registro e inicio de sesión
+- Listado, detalle, creación y edición de publicaciones
 
 ## 🛠️ Tecnologías
 
-| Tecnología | Versión |
+### Frontend
+| Tecnología | Uso |
 |---|---|
-| .NET | 9.0 |
-| ASP.NET Core MVC | 9.0 |
-| Entity Framework Core | 9.0.3 |
-| EF Core SQL Server | 9.0.3 |
-| ASP.NET Core Identity (+ EF y UI) | 9.0.3 |
-| SQL Server | — |
+| Razor Views (.cshtml) | Motor de plantillas |
+| HTML5 / CSS3 / JavaScript | Estructura, estilos e interactividad |
+| Bootstrap | Diseño responsive y componentes UI |
